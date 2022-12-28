@@ -15,6 +15,8 @@ let textValue,
 let numberImageList = 5;
 let sortValue = "relevance";
 
+// function submit
+
 function submitHandler() {
     if (!textValue || !sizeValue) {
         console.log("asd");
