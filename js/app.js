@@ -7,7 +7,6 @@ const numberImageInput = document.querySelector("#number-image");
 const messContainer = document.querySelector(".wrapper__header");
 const downloadBtn = document.querySelector(".card__download-btn");
 const cardImg = document.querySelector(".card__img");
-
 const apiKey = "1094eedda70a4792a96d7bf8e0bd0658";
 
 let textValue,
@@ -19,7 +18,6 @@ let sortValue = "relevance";
 
 function submitHandler() {
     if (!textValue || !sizeValue) {
-        console.log("asd");
         validate("Warning!", "Please fill out all fields");
         return;
     }
@@ -32,40 +30,17 @@ function submitHandler() {
             cardContainer.innerHTML = "";
             const imageList = data.photos.photo;
             imageList.map((item) => {
-                console.log(
-                    item.height_w
-                        ? item.height_w
-                        : item.height_c
-                        ? item.height_c
-                        : item.height_b
-                        ? item.height_b
-                        : ""
-                );
-                console.log(item);
                 let element = `
-                    <div class="card__box"  style="height: ${
-                        item.height_w
-                            ? item.height_w
-                            : item.height_c
-                            ? item.height_c
-                            : item.height_b
-                    }px">
+                    <div class="card__box" style="height: 100%">
                         <img
-                            src="https://live.staticflickr.com/${item.server}/${
-                    item.id
-                }_${item.secret}_${sizeValue}.jpg"   
+                            src="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_${sizeValue}.jpg"   
                             loading="lazy" 
                             alt=${item.title}
                             class="card__img"
                         />  
-                        <div class="card__download-btn" onclick="downloadImage('https://live.staticflickr.com/${
-                            item.server
-                        }/${item.id}_${item.secret}_${sizeValue}.jpg', '${
-                    item.id
-                }.jpg')">
+                        <div class="card__download-btn" onclick="downloadImage('https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_${sizeValue}.jpg', '${item.id}.jpg')">
                             <i class="fa-solid fa-download"></i>
                         </div>
-                    
                     </div>`;
                 cardContainer.innerHTML += element;
             });
