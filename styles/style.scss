@@ -6,11 +6,12 @@
     outline: none;
 }
 
-input, select {
+input,
+select {
     border: none;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -38,28 +39,26 @@ a{
     padding: 0 3rem;
     position: relative;
 
-    &::before{
+    &::before {
         content: "";
         width: 100%;
         position: absolute;
         height: 15px;
-        background: linear-gradient(to bottom,#345d23, #1f1f1b);     
+        background: linear-gradient(to bottom, #345d23, #1f1f1b);
         bottom: 0;
         left: 0;
     }
 
-    
     .header__nav {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .nav__link-list {   
+        .nav__link-list {
             list-style: none;
             .link-list__item {
-
                 a {
-                    color: #F1F1F1;
+                    color: #f1f1f1;
                     font-weight: 500;
                     font-size: 1.2rem;
                 }
@@ -73,21 +72,20 @@ a{
         left: 50%;
         width: 50%;
         .search-section__header {
-
             .search-section__header__search-sort {
                 display: flex;
                 list-style: none;
                 gap: 1.5rem;
 
                 .search-sort__item {
-                    padding: .4rem 1.5rem;
-                    margin-bottom: .5rem;
-                    background-color: #C1DAFB;
+                    padding: 0.4rem 1.5rem;
+                    margin-bottom: 0.5rem;
+                    background-color: #c1dafb;
                     border-radius: 30px;
                     font-size: 12px;
                     cursor: pointer;
-                    color: #205CAD;
-                    transition: all .3s ease;
+                    color: #205cad;
+                    transition: all 0.3s ease;
                     label {
                         cursor: pointer;
                         font-weight: 500;
@@ -96,27 +94,25 @@ a{
                         }
                     }
                     &.active {
-                        background: #0063FD;
-                        color: #fff; 
+                        background: #0063fd;
+                        color: #fff;
                     }
 
                     &:hover {
-                        background: #0063FD;
-                        color: #fff; 
-                     }
+                        background: #0063fd;
+                        color: #fff;
+                    }
 
                     &.number-image-box {
                         background: #fff;
                         color: #000;
-                        padding-right: .4rem;
+                        padding-right: 0.4rem;
                     }
 
-                    input[type=number]{
-                        color: #205CAD;
+                    input[type="number"] {
+                        color: #205cad;
                         width: 40px;
                     }
-
-                   
                 }
             }
         }
@@ -149,10 +145,10 @@ a{
                 -moz-appearance: none;
                 -webkit-appearance: none;
                 appearance: none;
-                background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+                background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
                 background-repeat: no-repeat;
-                background-position: right .7em top 50%, 0 0;
-                background-size: .65em auto, 100%;
+                background-position: right 0.7em top 50%, 0 0;
+                background-size: 0.65em auto, 100%;
             }
         }
     }
@@ -167,13 +163,13 @@ a{
         flex-wrap: wrap;
         padding: 1rem;
         justify-content: center;
-        .card__box{
+        .card__box {
             position: relative;
-            margin: .6rem .6rem;
-            .card__download-btn{
+            margin: 0.6rem 0.6rem;
+            .card__download-btn {
                 cursor: pointer;
                 background: #fff;
-                padding: .8rem 1rem;
+                padding: 0.8rem 1rem;
                 right: 10px;
                 position: absolute;
                 bottom: 10px;
@@ -194,7 +190,6 @@ a{
     }
 }
 
-
 .progress-bar {
     width: 100%;
     height: 2px;
@@ -214,15 +209,17 @@ a{
     width: 100%;
     .info-content {
         padding: 1rem;
-        background-color: #f9f9f9;;
+        background-color: #f9f9f9;
         margin: auto;
         width: 30%;
         text-align: center;
         height: 300px;
         border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+            rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 
-        p,h2 {
+        p,
+        h2 {
             margin-top: 2rem;
         }
     }
