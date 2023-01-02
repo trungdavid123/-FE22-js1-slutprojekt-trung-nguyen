@@ -175,7 +175,18 @@ a {
                 bottom: 10px;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 border-radius: 10px;
-
+                @include keyframes(fade){
+                    0%{
+                    opacity: 0;
+                    }
+                   50%{
+                    opacity: 0.5;
+                    }
+                   100%{
+                    opacity: 1;
+                   }
+                  }
+                @include animate(fade, 1s, linear, 1);
                 i {
                     color: rgb(76 76 76);
                 }
@@ -223,4 +234,9 @@ a {
             margin-top: 2rem;
         }
     }
+}
+
+
+@mixin animate($animation,$duration,$method,$times){
+    animation: $animation $duration $method $times;
 }
