@@ -30,6 +30,8 @@ function submitHandler() {
         .then((data) => {
             // Refresh the container 
             cardContainer.innerHTML = "";
+
+            // If no pictures found
             if (data.photos.pages === 0) {
                 showMessage("Warning!", 'Not found');
             }
@@ -98,6 +100,7 @@ function hideLoading() {
     });
 }
 
+// Show the message to user 
 function showMessage(typeErr, mess) {
     let popup = `
     <div class="popup w-72">
