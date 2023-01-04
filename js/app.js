@@ -28,6 +28,10 @@ function submitHandler() {
         .then((res) => res.json())
         .then((data) => {
             cardContainer.innerHTML = "";
+            if (data.photos.pages === 0) {
+                validate("Warning!", 'Not found');
+                return;
+            }
             const imageList = data.photos.photo;
             imageList.map((item) => {
                 let element = `
