@@ -54,8 +54,10 @@ a {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         .nav__link-list {
             list-style: none;
+
             .link-list__item {
                 a {
                     color: #f1f1f1;
@@ -65,12 +67,14 @@ a {
             }
         }
     }
+
     .header__search-section {
         position: absolute;
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
         width: 50%;
+
         .search-section__header {
             .search-section__header__search-sort {
                 display: flex;
@@ -86,13 +90,16 @@ a {
                     cursor: pointer;
                     color: #205cad;
                     transition: all 0.3s ease;
+
                     label {
                         cursor: pointer;
                         font-weight: 500;
+
                         &.number-image {
                             padding-right: 4px;
                         }
                     }
+
                     &.active {
                         background: #0063fd;
                         color: #fff;
@@ -124,8 +131,10 @@ a {
             transform: translateY(75%);
             left: 14px;
         }
+
         .search-section__search-box {
             display: flex;
+
             input {
                 width: 100%;
                 padding: 1rem 3rem;
@@ -133,6 +142,7 @@ a {
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
             }
+
             select {
                 border-left: 1px solid #000;
                 width: 21%;
@@ -158,14 +168,18 @@ a {
     width: 100%;
     background-color: #1f1f1b;
     padding-top: 10px;
+
     .wrapper__main__card {
         display: flex;
         flex-wrap: wrap;
         padding: 1rem;
         justify-content: center;
+
         .card__box {
+            height: 100%;
             position: relative;
             margin: 0.6rem 0.6rem;
+
             .card__download-btn {
                 cursor: pointer;
                 background: #fff;
@@ -175,22 +189,36 @@ a {
                 bottom: 10px;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 border-radius: 10px;
-                @include keyframes(fade){
-                    0%{
-                    opacity: 0;
-                    }
-                   50%{
-                    opacity: 0.5;
-                    }
-                   100%{
+                opacity: 0;
+
+                &.showBtn {
                     opacity: 1;
-                   }
-                  }
-                @include animate(fade, 1s, linear, 1);
+                    animation: fade 1.4s linear;
+
+
+                    @keyframes fade {
+                        0% {
+                            opacity: 0;
+                        }
+
+                        50% {
+                            opacity: 0.5;
+                        }
+
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                }
+
+
+
                 i {
                     color: rgb(76 76 76);
                 }
             }
+
             img {
                 border-radius: 10px;
                 width: 100%;
@@ -218,6 +246,7 @@ a {
 
 .info-container {
     width: 100%;
+
     .info-content {
         padding: 1rem;
         background-color: #f9f9f9;
@@ -234,9 +263,4 @@ a {
             margin-top: 2rem;
         }
     }
-}
-
-
-@mixin animate($animation,$duration,$method,$times){
-    animation: $animation $duration $method $times;
 }

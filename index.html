@@ -1,126 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            type="image/x-icon"
-            href="https://cdn-icons-png.flaticon.com/512/4644/4644031.png"
-        />
-        <script
-            src="https://kit.fontawesome.com/1f19322a87.js"
-            crossorigin="anonymous"
-        ></script>
-        <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
 
-        <script src="js/app.js" defer></script>
-        <link rel="stylesheet" href="styles/style.css" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-            rel="stylesheet"
-        />
-        <title>Search Images Application</title>
-    </head>
-    <body>
-        <div class="wrapper">
-            <header class="wrapper__header">
-                <nav class="header__nav">
-                    <a href="./index.html"
-                        ><img
-                            class="nav__logo"
-                            src="./assets/logo.svg"
-                            alt="logo YC"
-                    /></a>
-                    <ul class="nav__link-list">
-                        <li class="link-list__item">
-                            <a href="./pages/aboutUs.html">About us</a>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/4644/4644031.png" />
+    <script src="https://kit.fontawesome.com/1f19322a87.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+
+    <script src="js/app.js" defer></script>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <title>Search Images Application</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="wrapper__header">
+            <nav class="header__nav">
+                <a href="./index.html"><img class="nav__logo" src="./assets/logo.svg" alt="logo YC" /></a>
+                <ul class="nav__link-list">
+                    <li class="link-list__item">
+                        <a href="./pages/aboutUs.html">About us</a>
+                    </li>
+                </ul>
+            </nav>
+            <form class="header__search-section">
+                <div class="search-section__header">
+                    <ul class="search-section__header__search-sort">
+                        <li class="search-sort__item active">
+                            <input type="radio" id="relevant-btn" name="radio-btn" hidden />
+                            <label for="relevant-btn">Relevance</label>
+                        </li>
+                        <li class="search-sort__item">
+                            <input type="radio" id="date-uploaded-btn" name="radio-btn" hidden />
+                            <label for="date-uploaded-btn">Date uploaded</label>
+                        </li>
+                        <li class="search-sort__item">
+                            <input type="radio" id="interesting-btn" name="radio-btn" hidden name="interesting-btn" />
+                            <label for="interesting-btn">Interestingness</label>
+                        </li>
+                        <li class="search-sort__item number-image-box">
+                            <label class="number-image" for="number-image">Number of Images:
+                            </label>
+                            <input class="search-sort__item__number-image" type="number" value="5" id="number-image"
+                                name="number-image" min="1" max="500" onkeyup="checkMaxNumber(this.value)"
+                                oninput="if(value.length>3)value=value.slice(0,3)" />
                         </li>
                     </ul>
-                </nav>
-                <form class="header__search-section">
-                    <div class="search-section__header">
-                        <ul class="search-section__header__search-sort">
-                            <li class="search-sort__item active">
-                                <input
-                                    type="radio"
-                                    id="relevant-btn"
-                                    name="radio-btn"
-                                    hidden
-                                />
-                                <label for="relevant-btn">Relevance</label>
-                            </li>
-                            <li class="search-sort__item">
-                                <input
-                                    type="radio"
-                                    id="date-uploaded-btn"
-                                    name="radio-btn"
-                                    hidden
-                                />
-                                <label for="date-uploaded-btn"
-                                    >Date uploaded</label
-                                >
-                            </li>
-                            <li class="search-sort__item">
-                                <input
-                                    type="radio"
-                                    id="interesting-btn"
-                                    name="radio-btn"
-                                    hidden
-                                    name="interesting-btn"
-                                />
-                                <label for="interesting-btn"
-                                    >Interestingness</label
-                                >
-                            </li>
-                            <li class="search-sort__item number-image-box">
-                                <label class="number-image" for="number-image"
-                                    >Number of Images:
-                                </label>
-                                <input
-                                    class="search-sort__item__number-image"
-                                    type="number"
-                                    value="5"
-                                    id="number-image"
-                                    name="number-image"
-                                    min="1"
-                                    max="500"
-                                    onkeyup="checkMaxNumber(this.value)"
-                                    oninput="if(value.length>3)value=value.slice(0,3)"
-                                />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="search-section__search-box">
-                        <i class="fa-solid fa-magnifying-glass submitBtn"></i>
-                        <input
-                            id="search-image-input"
-                            type="text"
-                            placeholder="Search images..."
-                            autocomplete="off"
-                        />
-                        <select id="size-options" name="size-options" required>
-                            <option value="" disabled selected>
-                                Select Size
-                            </option>
-                            <option value="w">Small</option>
-                            <option value="c">Medium</option>
-                            <option value="b">Large</option>
-                        </select>
-                    </div>
-                </form>
-            </header>
-            <div class="progress-bar">
-                <div class="progress-bar__line"></div>
-            </div>
-            <main class="wrapper__main">
-                <div class="wrapper__main__card"></div>
-            </main>
+                </div>
+                <div class="search-section__search-box">
+                    <i class="fa-solid fa-magnifying-glass submitBtn"></i>
+                    <input id="search-image-input" type="text" placeholder="Search images..." autocomplete="off" />
+                    <select id="size-options" name="size-options" required>
+                        <option value="" disabled selected>
+                            Select Size
+                        </option>
+                        <option value="w">Small</option>
+                        <option value="c">Medium</option>
+                        <option value="b">Large</option>
+                    </select>
+                </div>
+            </form>
+        </header>
+        <div class="progress-bar">
+            <div class="progress-bar__line"></div>
         </div>
-    </body>
+        <main class="wrapper__main">
+            <div class="wrapper__main__card"></div>
+        </main>
+    </div>
+</body>
+
 </html>

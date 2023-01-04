@@ -14,40 +14,56 @@ let textValue,
 let numberImageList = 5;
 let sortValue = "relevance";
 
-// function submit
 
 function submitHandler() {
     if (!textValue || !sizeValue) {
-        validate("Warning!", "Please fill out all fields");
+        showMessage("Warning!", "Please fill out all fields");
         return;
     }
     displayLoading();
+
+    // Get the data from Flickr database 
     fetch(
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${textValue}&safe_search=1&sort=${sortValue}&extras=url_${sizeValue}&per_page=${numberImageList}&format=json&nojsoncallback=1`
     )
         .then((res) => res.json())
         .then((data) => {
+            // Refresh the container 
             cardContainer.innerHTML = "";
             if (data.photos.pages === 0) {
-                validate("Warning!", 'Not found');
-                return;
+                showMessage("Warning!", 'Not found');
             }
+
+            // Loop over the array of photos and then display it
             const imageList = data.photos.photo;
-            imageList.map((item) => {
+            imageList.map((item, i) => {
                 let element = `
-                    <div class="card__box" style="height: 100%">
+                    <div class="card__box">
                         <img
                             src="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_${sizeValue}.jpg"   
                             loading="lazy" 
                             alt=${item.title}
                             class="card__img"
                         />  
-                        <div class="card__download-btn" onclick="downloadImage('https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_${sizeValue}.jpg', '${item.id}.jpg')">
+                        <div class="card__download-btn hide">
                             <i class="fa-solid fa-download"></i>
                         </div>
                     </div>`;
                 cardContainer.innerHTML += element;
             });
+
+            // Loop through the download buttons and download the image if the button is clicked. 
+            let btnList = document.querySelectorAll('.card__download-btn');
+            for (let i = 0; i < btnList.length; i++) {
+                btnList[i].classList.add('showBtn');
+                btnList[i].addEventListener('click', () => {
+                    imageList.map((item, idx) => {
+                        if (idx === i) {
+                            downloadImage(`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_${sizeValue}.jpg`, `${item.id}.jpg`)
+                        }
+                    })
+                });
+            }
 
             hideLoading();
         })
@@ -56,8 +72,7 @@ function submitHandler() {
         });
 }
 
-// Animation
-
+// Animation for loading  
 function displayLoading() {
     anime({
         targets: ".progress-bar__line",
@@ -83,7 +98,7 @@ function hideLoading() {
     });
 }
 
-function validate(typeErr, mess) {
+function showMessage(typeErr, mess) {
     let popup = `
     <div class="popup w-72">
         <div
@@ -102,6 +117,7 @@ function validate(typeErr, mess) {
     }, 1800);
 }
 
+// Check if the number input is bigger than 500 
 function checkMaxNumber(value) {
     if (value > 500) {
         numberImageInput.value = 500;
@@ -109,6 +125,7 @@ function checkMaxNumber(value) {
     }
 }
 
+// Download image function
 async function downloadImage(imageSrc, title) {
     const image = await fetch(imageSrc);
     const imageBlog = await image.blob();
@@ -138,6 +155,8 @@ sizeOptionList.addEventListener("change", (e) => {
     if (e.target.value > 500) sizeValue === 500;
 });
 
+
+// Sort the images for the search and changes its value every time user make a action
 sortBtnList.forEach((btn) => {
     btn.parentElement.addEventListener("click", (e) => {
         document
