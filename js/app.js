@@ -69,8 +69,8 @@ function submitHandler() {
 
             hideLoading();
         })
-        .catch((err) => {
-            throw new Error(err);
+        .catch(() => {
+            showMessage("Warning!", "Something went wrong");
         });
 }
 
